@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>МОСИННСТРОЙ — Строительство жилых и нежилых зданий</title>
     <meta name="description" content="ООО МОСИННСТРОЙ — строительство жилых и нежилых зданий в Москве и Московской области. Монтаж внутренних систем, электроснабжение, слаботочные системы.">
+    <meta name="theme-color" content="#1a3a5c">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="МОСИННСТРОЙ — Строительство жилых и нежилых зданий">
+    <meta property="og:description" content="Полный цикл строительства жилых и нежилых зданий в Москве и Московской области. От проекта до ввода в эксплуатацию.">
+    <meta property="og:url" content="https://mosinnstroy.ru/">
+    <meta property="og:image" content="https://mosinnstroy.ru/images/og.jpg">
+    <meta property="og:locale" content="ru_RU">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -170,43 +177,77 @@
 
         /* Hero */
         .hero {
-            padding: 160px 24px 100px;
+            padding: 170px 24px 120px;
             text-align: center;
-            background: linear-gradient(165deg, #f0f4f8 0%, #fff 50%, #fdf6e9 100%);
             position: relative;
             overflow: hidden;
+            background:
+                linear-gradient(160deg, rgba(15,31,48,.92) 0%, rgba(26,58,92,.85) 55%, rgba(26,58,92,.78) 100%),
+                linear-gradient(135deg, #16324f, #1a3a5c);
+            background-size: cover;
+            background-position: center;
+        }
+        .hero.has-img {
+            background:
+                linear-gradient(160deg, rgba(15,31,48,.9) 0%, rgba(26,58,92,.82) 55%, rgba(26,58,92,.7) 100%),
+                url('images/hero.jpg') center/cover no-repeat;
         }
         .hero::before {
             content: '';
             position: absolute;
             top: -50%;
-            right: -20%;
+            right: -15%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(212,162,78,0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(212,162,78,0.18) 0%, transparent 70%);
             border-radius: 50%;
+        }
+        .hero-tag {
+            display: inline-block;
+            background: rgba(212,162,78,.18);
+            color: var(--accent-light);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 7px 18px;
+            border-radius: 20px;
+            margin-bottom: 22px;
+            position: relative;
         }
         .hero h1 {
             font-size: clamp(32px, 5vw, 56px);
             font-weight: 800;
-            color: var(--primary);
+            color: #fff;
             margin-bottom: 20px;
             line-height: 1.15;
+            position: relative;
         }
         .hero h1 span {
             color: var(--accent);
         }
         .hero p {
             font-size: clamp(16px, 2vw, 20px);
-            color: var(--text-light);
+            color: rgba(255,255,255,.82);
             max-width: 640px;
             margin: 0 auto 40px;
+            position: relative;
+        }
+        .hero .btn-secondary {
+            color: #fff;
+            background: rgba(255,255,255,.08);
+            border-color: rgba(255,255,255,.4);
+        }
+        .hero .btn-secondary:hover {
+            border-color: #fff;
+            background: rgba(255,255,255,.16);
         }
         .hero-buttons {
             display: flex;
             gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
+            position: relative;
         }
         .btn-primary {
             display: inline-flex;
@@ -361,17 +402,17 @@
             overflow: hidden;
             aspect-ratio: 4/3;
             background: linear-gradient(135deg, var(--primary), #264d73);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: relative;
+            box-shadow: 0 20px 48px rgba(26,58,92,.18);
         }
-        .about-image svg { width: 120px; height: 120px; color: rgba(255,255,255,0.2); }
+        .about-image .ph { position: absolute; inset: 0; background: url('images/about.jpg') center/cover no-repeat; }
+        .about-image .fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+        .about-image .fallback svg { width: 120px; height: 120px; color: rgba(255,255,255,0.2); }
         .about-image::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, transparent 50%, rgba(212,162,78,0.15));
+            background: linear-gradient(135deg, transparent 55%, rgba(212,162,78,0.15));
         }
         .about-text h2 {
             font-size: clamp(28px, 3.5vw, 36px);
@@ -459,6 +500,11 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+        .cta.has-img {
+            background:
+                linear-gradient(135deg, rgba(26,58,92,.92), rgba(15,31,48,.88)),
+                url('images/cta.jpg') center/cover no-repeat;
         }
         .cta::before {
             content: '';
@@ -617,8 +663,9 @@
 </div>
 
 <!-- Hero -->
-<section class="hero">
+<section class="hero" id="hero">
     <div class="fade-up">
+        <span class="hero-tag">Строительство в Москве и МО</span>
         <h1>Строим <span>надёжно</span>,<br>сдаём вовремя</h1>
         <p>Полный цикл строительства жилых и нежилых зданий в Москве и Московской области. От проекта до ввода в эксплуатацию.</p>
         <div class="hero-buttons">
@@ -766,7 +813,8 @@
     <div class="section-inner">
         <div class="about-grid">
             <div class="about-image fade-left">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <div class="fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                <div class="ph" role="img" aria-label="Строительный объект компании МОСИННСТРОЙ"></div>
             </div>
             <div class="about-text fade-right">
                 <h2>О компании</h2>
@@ -836,7 +884,7 @@
 </section>
 
 <!-- CTA -->
-<section class="cta">
+<section class="cta" id="cta">
     <div class="fade-up">
         <h2>Готовы обсудить ваш проект?</h2>
         <p>Свяжитесь с нами для бесплатной консультации</p>
@@ -892,6 +940,15 @@
     // Header shadow on scroll
     window.addEventListener('scroll', () => {
         document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // Enable background photos only if they load (graceful fallback to gradient)
+    [['hero', 'images/hero.jpg'], ['cta', 'images/cta.jpg']].forEach(([id, src]) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const img = new Image();
+        img.onload = () => el.classList.add('has-img');
+        img.src = src;
     });
 </script>
 
