@@ -273,7 +273,14 @@
         <div class="req-section-title">Контакты</div>
         <div class="req-row">
             <div class="req-label">E-mail</div>
-            <div class="req-value"><a href="mailto:Pankratov.iv@mail.ru" style="color: #1a3a5c; text-decoration: none;">Pankratov.iv@mail.ru</a></div>
+            <div class="req-value">
+                <div id="email-box">
+                    <button type="button" id="revealEmail" style="display:inline-flex;align-items:center;gap:8px;background:#1a3a5c;color:#fff;border:none;cursor:pointer;padding:9px 18px;border-radius:8px;font-size:14px;font-weight:600;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        Показать
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="req-row">
             <div class="req-label">Телефон</div>
@@ -285,6 +292,16 @@
 <footer>
     <p>&copy; 2024&ndash;2026 ООО &laquo;МИС&raquo;. Все права защищены. &nbsp;|&nbsp; <a href="/">Главная</a></p>
 </footer>
+
+<script>
+    // Email reveal (anti-spam: assembled in JS, not present in HTML source)
+    var emailParts = ['info', String.fromCharCode(64), 'mosinnstroy', '.', 'ru'];
+    document.getElementById('revealEmail').addEventListener('click', function () {
+        var addr = emailParts.join('');
+        document.getElementById('email-box').innerHTML =
+            '<a href="' + 'mai' + 'lto:' + addr + '" style="color:#1a3a5c;text-decoration:none;font-weight:600;">' + addr + '</a>';
+    });
+</script>
 
 </body>
 </html>
